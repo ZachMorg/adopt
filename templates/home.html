@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+
+    <h2>Home</h2>
+
+    {% for pet in pets %}
+        <div>
+            <br>
+            {% if pet.photo_url != 'https://img.freepik.com/premium-vector/photo-camera-vector-sign-icon-digital-camera-symbol-flat-design-style_231786-3985.jpg?w=2000' %}
+                <img src="{{pet.photo_url}}">
+            {% endif %}
+            <br>
+            <a>
+                <a href="/pets/{{pet.id}}">{{pet.name}}</a> 
+                {% if pet.available %}
+                    is available
+                {% endif %}
+            </a>
+            
+            
+        </div>
+    {% endfor %}
+
+    <a href="/pets/new">Add a Pet</a>
+
+{% endblock %}
